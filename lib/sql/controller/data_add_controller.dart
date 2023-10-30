@@ -25,7 +25,6 @@ class DataAddController extends GetxController {
       NoteModel(
         title: titleTE.text,
         description: descriptionTE.text,
-        age: ageTE.text.compareTo(ageTE.toString()),
         email: emailTE.text,
       ),
     )

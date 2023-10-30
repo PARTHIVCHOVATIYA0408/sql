@@ -22,7 +22,6 @@ class DataEditController extends GetxController {
     titleTE.text = noteModel.title;
     emailTE.text = noteModel.email;
     descriptionTE.text = noteModel.description;
-    ageTE.text = noteModel.age.toString();
     super.onInit();
   }
 
@@ -33,7 +32,6 @@ class DataEditController extends GetxController {
           id: noteModel.id,
           title: titleTE.text,
           description: descriptionTE.text,
-          age: ageTE.text.compareTo(ageTE.toString()),
           email: emailTE.text),
     )
         .then((value) {

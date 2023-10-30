@@ -48,76 +48,73 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 12),
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: FutureBuilder(
-                  future: controller.noteList,
-                  builder: (context, snapshot) {
-                    return snapshot.hasData
-                        ? ListView.separated(
-                            itemCount: snapshot.data!.length,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              NoteModel note = snapshot.data![index];
-                              return InkWell(
-                                onTap: () {
-                                  controller.onEditNote(note);
-                                },
-                                child: Dismissible(
-                                  direction: DismissDirection.endToStart,
-                                  onDismissed: (direction) =>
-                                      controller.onDeleteNote(note),
-                                  background: Container(
-                                    color: Colors.redAccent,
-                                    child: Icon(
-                                      LucideIcons.trash2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  key: UniqueKey(),
-                                  // key: ValueKey<int>(note.id!),
-                                  child: Container(
-                                    padding: EdgeInsets.all(12),
-                                    color: Colors.greenAccent.withAlpha(40),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(4),
-                                          child: Text(snapshot.data![index].id
-                                              .toString()),
-                                        ),
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text("Title : ${note.title}"),
-                                              Text(
-                                                  "Description : ${note.description}"),
-                                              Text("Email : ${note.email}"),
-                                              Text("Age : ${note.age.ceil()}"),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: FutureBuilder(
+                future: controller.noteList,
+                builder: (context, snapshot) {
+                  return snapshot.hasData
+                      ? ListView.separated(
+                          itemCount: snapshot.data!.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            NoteModel note = snapshot.data![index];
+                            return InkWell(
+                              onTap: () {
+                                controller.onEditNote(note);
+                              },
+                              child: Dismissible(
+                                direction: DismissDirection.endToStart,
+                                onDismissed: (direction) =>
+                                    controller.onDeleteNote(note),
+                                background: Container(
+                                  color: Colors.redAccent,
+                                  child: Icon(
+                                    LucideIcons.trash2,
+                                    color: Colors.white,
                                   ),
                                 ),
-                              );
-                            },
-                            separatorBuilder: (context, index) {
-                              return SizedBox(
-                                height: 16,
-                              );
-                            },
-                          )
-                        : Center(child: CircularProgressIndicator());
-                  },
-                ),
+                                key: UniqueKey(),
+                                // key: ValueKey<int>(note.id!),
+                                child: Container(
+                                  padding: EdgeInsets.all(12),
+                                  color: Colors.greenAccent.withAlpha(40),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.all(4),
+                                        child: Text(snapshot.data![index].id
+                                            .toString()),
+                                      ),
+                                      SizedBox(
+                                        width: 12,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text("Title : ${note.title}"),
+                                            Text(
+                                                "Description : ${note.description}"),
+                                            Text("Email : ${note.email}"),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(
+                              height: 16,
+                            );
+                          },
+                        )
+                      : Center(child: CircularProgressIndicator());
+                },
               ),
             ),
           ),
