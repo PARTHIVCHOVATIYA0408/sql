@@ -98,6 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Text(
                                                 "Description : ${note.description}"),
                                             Text("Email : ${note.email}"),
+                                            Text("Age : ${note.age}"),
                                           ],
                                         ),
                                       ),

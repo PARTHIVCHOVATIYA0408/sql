@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sql/helper/extention/extensions.dart';
 import 'package:sql/sql/model/db_helper.dart';
 import 'package:sql/sql/model/note_model.dart';
 
@@ -32,6 +33,7 @@ class DataEditController extends GetxController {
           id: noteModel.id,
           title: titleTE.text,
           description: descriptionTE.text,
+          age: ageTE.text.toInt(),
           email: emailTE.text),
     )
         .then((value) {

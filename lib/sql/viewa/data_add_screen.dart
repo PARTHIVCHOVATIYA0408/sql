@@ -27,7 +27,7 @@ class _DataAddScreenState extends State<DataAddScreen> {
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(
+            title: const Text(
               "Data Add Screen",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -35,7 +35,7 @@ class _DataAddScreenState extends State<DataAddScreen> {
             ),
           ),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Center(
               child: SingleChildScrollView(
                 child: Column(
@@ -47,13 +47,13 @@ class _DataAddScreenState extends State<DataAddScreen> {
                       decoration: InputDecoration(
                         hintText: "Enter title",
                         isDense: true,
-                        contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     TextFormField(
@@ -61,13 +61,13 @@ class _DataAddScreenState extends State<DataAddScreen> {
                       decoration: InputDecoration(
                         hintText: "Enter Description",
                         isDense: true,
-                        contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     TextFormField(
@@ -75,46 +75,43 @@ class _DataAddScreenState extends State<DataAddScreen> {
                       decoration: InputDecoration(
                         hintText: "Enter email",
                         isDense: true,
-                        contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
-                    SizedBox(
-                      height: 12,
+                    const SizedBox(
+                      height: 20,
                     ),
                     TextFormField(
                       controller: controller.ageTE,
                       decoration: InputDecoration(
                         hintText: "Enter age",
                         isDense: true,
-                        contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     InkWell(
                       onTap: controller.onAdd,
-
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             LucideIcons.plus,
                             size: 20,
-
                           ),
                           Text(
                             "Add Data",
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
-
                             ),
                           ),
                         ],

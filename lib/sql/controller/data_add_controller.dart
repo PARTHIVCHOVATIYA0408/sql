@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sql/helper/extention/extensions.dart';
 import 'package:sql/sql/model/db_helper.dart';
 import 'package:sql/sql/model/note_model.dart';
 
@@ -25,6 +26,7 @@ class DataAddController extends GetxController {
       NoteModel(
         title: titleTE.text,
         description: descriptionTE.text,
+        age: ageTE.text.toInt(),
         email: emailTE.text,
       ),
     )
