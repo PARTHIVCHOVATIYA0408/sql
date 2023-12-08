@@ -28,7 +28,7 @@ class DataAddController extends GetxController {
         description: descriptionTE.text,
         age: ageTE.text.toInt(),
         email: emailTE.text,
-      ),
+      )
     )
         .then((value) {
       Get.back(result: true);
