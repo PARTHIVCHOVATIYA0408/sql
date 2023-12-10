@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:sql/sql/model/db_helper.dart';
 import 'package:sql/sql/model/note_model.dart';
-import 'package:sql/sql/viewa/data_add_screen.dart';
-import 'package:sql/sql/viewa/data_edit_screen.dart';
+import 'package:sql/sql/view/data_add_screen.dart';
+import 'package:sql/sql/view/data_edit_screen.dart';
 
 class HomeController extends GetxController {
   late DBHelper dbHelper;
@@ -23,7 +23,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> gotoAddDataScreen() async {
-    bool? result = await Get.to(DataAddScreen());
+    bool? result = await Get.to(const DataAddScreen());
     if (result == true) {
       loadData();
       update();
