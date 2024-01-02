@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text(
+            title: const Text(
               "HomeScreen",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -44,16 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             elevation: 0,
             highlightElevation: 0,
-            child: Icon(LucideIcons.plus),
+            child: const Icon(LucideIcons.plus),
           ),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: FutureBuilder(
                 future: controller.noteList,
                 builder: (context, snapshot) {
-                  return snapshot.hasData
+                  return snapshot.data!.isNotEmpty
                       ? ListView.separated(
                           itemCount: snapshot.data!.length,
                           shrinkWrap: true,
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     controller.onDeleteNote(note),
                                 background: Container(
                                   color: Colors.redAccent,
-                                  child: Icon(
+                                  child: const Icon(
                                     LucideIcons.trash2,
                                     color: Colors.white,
                                   ),
@@ -77,16 +77,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                 key: UniqueKey(),
                                 // key: ValueKey<int>(note.id!),
                                 child: Container(
-                                  padding: EdgeInsets.all(12),
-                                  color: Colors.greenAccent.withAlpha(40),
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                      color: Colors.greenAccent,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(12))),
                                   child: Row(
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.all(4),
+                                        padding: const EdgeInsets.all(4),
+                                        decoration: BoxDecoration(
+                                            color: Colors.blueAccent,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(12))),
                                         child: Text(snapshot.data![index].id
                                             .toString()),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 12,
                                       ),
                                       Expanded(
@@ -109,12 +116,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                           },
                           separatorBuilder: (context, index) {
-                            return SizedBox(
+                            return const SizedBox(
                               height: 16,
                             );
                           },
                         )
-                      : Center(child: CircularProgressIndicator());
+                      : const Center(
+                          child: Text(
+                          "No data Found Please add data",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, letterSpacing: 0.5),
+                        ));
                 },
               ),
             ),
