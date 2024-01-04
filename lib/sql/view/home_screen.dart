@@ -34,6 +34,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            actions: [
+              InkWell(
+                onTap: () {
+                  controller.changeTheme();
+                },
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                child: Icon(
+                    !controller.isDark ? Icons.dark_mode : Icons.light_mode,
+                    size: 20),
+              ),
+            ],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
@@ -48,87 +60,84 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: FutureBuilder(
-                future: controller.noteList,
-                builder: (context, snapshot) {
-                  return snapshot.data!.isNotEmpty
-                      ? ListView.separated(
-                          itemCount: snapshot.data!.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            NoteModel note = snapshot.data![index];
-                            return InkWell(
-                              onTap: () {
-                                controller.onEditNote(note);
-                              },
-                              child: Dismissible(
-                                direction: DismissDirection.endToStart,
-                                onDismissed: (direction) =>
-                                    controller.onDeleteNote(note),
-                                background: Container(
-                                  color: Colors.redAccent,
-                                  child: const Icon(
-                                    LucideIcons.trash2,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                key: UniqueKey(),
-                                // key: ValueKey<int>(note.id!),
-                                child: Container(
-                                  padding: const EdgeInsets.all(12),
-                                  decoration: BoxDecoration(
-                                      color: Colors.greenAccent,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.all(4),
-                                        decoration: BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(12))),
-                                        child: Text(snapshot.data![index].id
-                                            .toString()),
-                                      ),
-                                      const SizedBox(
-                                        width: 12,
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text("Title : ${note.title}"),
-                                            Text(
-                                                "Description : ${note.description}"),
-                                            Text("Email : ${note.email}"),
-                                            Text("Age : ${note.age}"),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+            child: FutureBuilder(
+              future: controller.noteList,
+              builder: (context, snapshot) {
+                return snapshot.data!.isNotEmpty
+                    ? ListView.separated(
+                        itemCount: snapshot.data!.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          NoteModel note = snapshot.data![index];
+                          return InkWell(
+                            onTap: () {
+                              controller.onEditNote(note);
+                            },
+                            child: Dismissible(
+                              direction: DismissDirection.endToStart,
+                              onDismissed: (direction) =>
+                                  controller.onDeleteNote(note),
+                              background: Container(
+                                color: Colors.redAccent,
+                                child: const Icon(
+                                  LucideIcons.trash2,
+                                  color: Colors.white,
                                 ),
                               ),
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return const SizedBox(
-                              height: 16,
-                            );
-                          },
-                        )
-                      : const Center(
-                          child: Text(
-                          "No data Found Please add data",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, letterSpacing: 0.5),
-                        ));
-                },
-              ),
+                              key: UniqueKey(),
+                              // key: ValueKey<int>(note.id!),
+                              child: Container(
+                                padding: const EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                    color: Colors.greenAccent,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12))),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(4),
+                                      decoration: BoxDecoration(
+                                          color: Colors.blueAccent,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12))),
+                                      child: Text(
+                                          snapshot.data![index].id.toString()),
+                                    ),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text("Title : ${note.title}"),
+                                          Text(
+                                              "Description : ${note.description}"),
+                                          Text("Email : ${note.email}"),
+                                          Text("Age : ${note.age}"),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(
+                            height: 16,
+                          );
+                        },
+                      )
+                    : const Center(
+                        child: Text(
+                        "No data Found Please add data",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, letterSpacing: 0.5),
+                      ));
+              },
             ),
           ),
         );
