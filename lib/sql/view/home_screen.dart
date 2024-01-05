@@ -34,18 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            actions: [
-              InkWell(
-                onTap: () {
-                  controller.changeTheme();
-                },
-                highlightColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                child: Icon(
-                    !controller.isDark ? Icons.dark_mode : Icons.light_mode,
-                    size: 20),
-              ),
-            ],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {

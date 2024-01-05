@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sql/helper/theme.dart';
 import 'package:sql/sql/view/home_screen.dart';
 
 void main() {
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.theme,
       home: const HomeScreen(),
     );
   }
